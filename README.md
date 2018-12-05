@@ -4,7 +4,7 @@ Doctor Fill is accepting new patients.
 
 DoctorFill is a GitHub App that is installed on the SCalwas/github_app_poc
 repository. Whenever a push occurs on the repo, the app sends a notification
-to a configured URL. The Doctor Fill web application can receive the 
+to a configured URL. The related Doctor Fill web application can receive the 
 notifications and perform whatever operations it deems appropriate, within
 commonly accepted medical practices, of course.
 
@@ -15,8 +15,8 @@ sends its notifications to an intermediate URL destination. The intermediate
 destination then passes them to the Doctor Fill web application. Every time 
 you start a new dev session, you must set up this intermediary.
 
-The intermediate URL is stored in the smeeio_url.txt file. Copy the URL address
-and enter it on the following command line.
+The intermediate URL is stored in the smeeio_url.txt file. Copy the URL address.
+At a command prompt, enter the URL and run the following command line.
 
 ```
 smee -u <smeeURL>
