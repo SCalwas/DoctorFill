@@ -117,7 +117,10 @@ pip install -r requirements.txt
 
 To verify that everything is set up correctly, run the intermediary smee client as 
 described in an earlier section. Then run the Doctor Fill app.py from a command 
-line or IDE/debugger. Doctor Fill should perform its initialization and then begin
+line or IDE/debugger. If configuring an IDE/debugger, Doctor Fill is a Flask app 
+and it must monitor port 3000. (The default port for Flask apps is 5000.)
+
+Upon startup, Doctor Fill should perform its initialization and then begin
 waiting for notifications from GitHub. As Doctor Fill proceeds, it logs 
 informational messages to the console.
 
