@@ -1,0 +1,6 @@
+.idea/
+static/
+templates/
+venv/
+doctorfill.2018-11-21.private-key.pem
+github_app_credentials
