@@ -56,12 +56,12 @@ smee -u <smeeUrlAddress>
 
 The intermediary will run and wait for notifications from GitHub. It requires
 no user interaction to perform its duties. Just run it and leave it alone. When
-you want to terminate it, enter <Ctrl-C>.
+you want to terminate it, enter Ctrl-C.
 
 If you want, you can optionally monitor in your browser the notifications and 
-payloads that the intermediary receives from GitHub. To do so, go to the URL 
-address in your browser. The loaded webpage is updated dynamically whenever it 
-receives a notification.
+payloads that the intermediary receives from GitHub. To do so, in your browser,
+go to the intermediary URL address. The loaded webpage is updated dynamically 
+whenever it receives a notification.
 
 ## Adding functionality to Doctor Fill
 
@@ -118,7 +118,7 @@ pip install -r requirements.txt
 To verify that everything is set up correctly, run the intermediary smee client as 
 described in an earlier section. Then run the Doctor Fill app.py from a command 
 line or IDE/debugger. Doctor Fill should perform its initialization and then begin
-waiting for notifications from GitHub. As Doctor Fill proceeds, it sends 
+waiting for notifications from GitHub. As Doctor Fill proceeds, it logs 
 informational messages to the console.
 
 When Doctor Fill is waiting for notifications, go to the SCalwas/github_app_poc
