@@ -2,7 +2,7 @@
 
 Doctor Fill is the primary care physician for the AWS SDK Docs team.
 
-Doctor Fill employs a two-pronged approach to keep SDK docs healthy and happy.
+To keep SDK docs healthy and happy, Doctor Fill employs a two-pronged approach.
 
 * The DoctorFill GitHub App can be installed on any GitHub repo. Whenever a push
 occurs to a repo that has the app installed, Doctor Fill sends a notification.
@@ -27,9 +27,9 @@ dependencies.
 between the DoctorFill GitHub App and the Doctor Fill web application. This
 address receives the GitHub notification and passes it along to the web app.
 Using an intermediary eliminates having to expose your computer to the internet
-so that it can receive notifications directly.
+in order to receive notifications directly.
 * README.md - The file you are reading now.
-* .gitignore - Should be self-evident.
+* .gitignore - Self-evident.
 
 In addition, the following files are provided to dev contributors, but are
 not part of the repository.
@@ -40,7 +40,7 @@ to the contents of this file.
 * doctorfill.2018-11-21.private-key.pem - Private key text file. No modifications
 ever need to be made to the contents of this file.
 
-## Doctor Fill setup to perform for every session
+## Doctor Fill setup to perform before every session
 
 To prevent exposing your computer to the internet, the DoctorFill GitHub App
 sends its notifications to an intermediate URL destination. The intermediate 
@@ -54,10 +54,14 @@ At a terminal prompt, paste the URL into the following command.
 smee -u <smeeUrlAddress>
 ```
 
-You can optionally monitor in your browser the notifications and payloads that 
-the intermediary receives from GitHub and passes to the web application. To do
-so, go to the URL address in your browser. The loaded page is updated dynamically
-whenever it receives a notification.
+The intermediary will run and wait for notifications from GitHub. It requires
+no user interaction to perform its duties. Just run it and leave it alone. When
+you want to terminate it, enter <Ctrl-C>.
+
+If you want, you can optionally monitor in your browser the notifications and 
+payloads that the intermediary receives from GitHub. To do so, go to the URL 
+address in your browser. The loaded webpage is updated dynamically whenever it 
+receives a notification.
 
 ## Adding functionality to Doctor Fill
 
@@ -83,7 +87,7 @@ to pull the modified file(s) to your local repo afterward.
 
 ## One-time Doctor Fill setup
 
-The DoctorFill GithHub App is already installed on the SCalwas/github_app_poc repo.
+The DoctorFill GitHub App is already installed on the SCalwas/github_app_poc repo.
 No further setup of the GitHub App needs to occur.
 
 Before running the Doctor Fill web application for the first time, perform the
@@ -113,12 +117,12 @@ pip install -r requirements.txt
 
 To verify that everything is set up correctly, run the intermediary smee client as 
 described in an earlier section. Then run the Doctor Fill app.py from a command 
-line or IDE/debugger. The web app should perform its initialization and then begin
+line or IDE/debugger. Doctor Fill should perform its initialization and then begin
 waiting for notifications from GitHub. As Doctor Fill proceeds, it sends 
 informational messages to the console.
 
 When Doctor Fill is waiting for notifications, go to the SCalwas/github_app_poc
 repo and create a new issue. Use any issue name and description. After the issue is
-created, Doctor Fill automatically adds the "enhancement" label to it. If the
+created, Doctor Fill should automatically add the "enhancement" label to it. If the
 label appears shortly after creating the issue, the dev environment is working
 correctly.
