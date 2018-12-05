@@ -30,13 +30,20 @@ to monitor the notifications and payloads sent from GitHub.
 When Doctor Fill receives notification that a push has occurred on the 
 github_app_poc repository, it cycles through each new file that was added to the
 repo in the push's commits. For each new file, Doctor Fill loads the file's 
-contents and can pass the contents of type 'bytes' to a linter-type function. 
+contents and can optionally pass the contents of type 'bytes' to a linter-type 
+function. 
 
-Insert a call to your function at line 130 of the app.py source file. Your function
-can perform any exploratory and surgical operations it desires. If it changes 
-the file's contents, it should return True, otherwise False. If the file is 
+Insert a call to your function around line 130 of the app.py source file. 
+
+```python
+### Pass to linter ###
+# updated = add_your_function_here(contents)
+```
+
+Your function can perform any exploratory and surgical operations it desires. If it 
+changes the file's contents, it should return True, otherwise False. If the file is 
 changed, Doctor Fill commits the modified file back to the repo. Afterward, don't 
-forget to pull the changed file to your local repo.
+forget to pull the modified file(s) to your local repo.
 
 
 ## One-time setup
