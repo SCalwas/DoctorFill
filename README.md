@@ -1,39 +1,74 @@
-# Doctor Fill Web Application
+# Doctor Fill
 
-Doctor Fill is accepting new patients.
+Doctor Fill is the primary care physician for the AWS SDK Docs team.
 
-DoctorFill is a GitHub App that is installed on the SCalwas/github_app_poc
-repository. Whenever a push occurs on the repo, the app sends a notification
-to a configured URL. The related Doctor Fill web application can receive the 
-notifications and perform whatever operations it deems appropriate, within
-commonly accepted medical practices, of course.
+Doctor Fill employs a two-pronged approach to keep SDK docs healthy and happy.
 
-## Setup to perform for every session
+* The DoctorFill GitHub App can be installed on any GitHub repo. Whenever a push
+occurs to a repo that has the app installed, Doctor Fill sends a notification.
+* The Doctor Fill web application receives the notifications and performs whatever
+operations it deems appropriate, within commonly accepted medical practices, of
+course.
 
-To prevent exposing your computer to the internet, the DoctorFill GitHub app
+For development purposes, the DoctorFill GitHub App is installed on the GitHub
+repo SCalwas/github_app_poc. A push to the repo triggers the sending of a 
+notification. If the Doctor Fill web application is running, it can receive and
+process the event.
+
+## Doctor Fill Dissected
+
+Doctor Fill comprises the following files.
+
+* app.py - The main Doctor Fill module. It receives notifications from GitHub,
+verifies the received information, and prescribes appropriate operations.
+* requirements.txt - Initialization file used to install Python package 
+dependencies.
+* smeeio_url.txt - Contains a URL address. This address acts as an intermediary
+between the DoctorFill GitHub App and the Doctor Fill web application. This
+address receives the GitHub notification and passes it along to the web app.
+Using an intermediary eliminates having to expose your computer to the internet
+so that it can receive notifications directly.
+* README.md - The file you are reading now.
+* .gitignore - Should be self-evident.
+
+In addition, the following files are provided to dev contributors, but are
+not part of the repository.
+
+* github_app_credentials - A text file that contains credentials necessary to
+run the GitHub App and web application. No modifications ever need to be made
+to the contents of this file.
+* doctorfill.2018-11-21.private-key.pem - Private key text file. No modifications
+ever need to be made to the contents of this file.
+
+## Doctor Fill setup to perform for every session
+
+To prevent exposing your computer to the internet, the DoctorFill GitHub App
 sends its notifications to an intermediate URL destination. The intermediate 
 destination then passes them to the Doctor Fill web application. Every time 
 you start a new dev session, you must set up this intermediary.
 
 The intermediate URL is stored in the smeeio_url.txt file. Copy the URL address.
-At a command prompt, enter the URL and run the following command line.
+At a terminal prompt, paste the URL into the following command.
 
 ```
-smee -u <smeeURL>
+smee -u <smeeUrlAddress>
 ```
 
-Optionally, go to the same URL in your browser. From the browser, you'll be able
-to monitor the notifications and payloads sent from GitHub.
+You can optionally monitor in your browser the notifications and payloads that 
+the intermediary receives from GitHub and passes to the web application. To do
+so, go to the URL address in your browser. The loaded page is updated dynamically
+whenever it receives a notification.
 
 ## Adding functionality to Doctor Fill
 
-When Doctor Fill receives notification that a push has occurred on the 
-github_app_poc repository, it cycles through each new file that was added to the
-repo in the push's commits. For each new file, Doctor Fill loads the file's 
-contents and can optionally pass the contents of type 'bytes' to a linter-type 
-function. 
+When the Doctor Fill web application receives notification that a push has occurred 
+on the github_app_poc repository, it cycles through each new file that was added to
+the repo as part of the push. For each new file, Doctor Fill loads the file's 
+contents and can pass the contents to a linter-type function. The file contents are
+passed as type 'bytes.'
 
-Insert a call to your function around line 130 of the app.py source file. 
+To have your function called, insert the appropriate code statement around line 130
+of the app.py source file. The location with a sample function call is shown below.
 
 ```python
 ### Pass to linter ###
@@ -42,25 +77,48 @@ Insert a call to your function around line 130 of the app.py source file.
 
 Your function can perform any exploratory and surgical operations it desires. If it 
 changes the file's contents, it should return True, otherwise False. If the file is 
-changed, Doctor Fill commits the modified file back to the repo. Afterward, don't 
-forget to pull the modified file(s) to your local repo.
+changed, Doctor Fill will commit the modified file back to the repo. Don't forget 
+to pull the modified file(s) to your local repo afterward.
 
 
-## One-time setup
+## One-time Doctor Fill setup
+
+The DoctorFill GithHub App is already installed on the SCalwas/github_app_poc repo.
+No further setup of the GitHub App needs to occur.
 
 Before running the Doctor Fill web application for the first time, perform the
 following one-time setup operations.
 
 * Clone the SCalwas/DoctorFill repository.
-* From Amazon Docs, copy the necessary shared files. Store them in the DoctorFile
-repo directory. The .gitignore file will not add them to the repository.
-* Install Node.js
-* Install the smee client that is run for every session.
+* From Amazon WorkDocs, copy the required shared files (github_app_credentials and
+doctorfill.2018-11-21.private-key.pem). Store them in the DoctorFill repo directory.
+The .gitignore file will prevent them from ever being added to the repository.
+* Install Node.js. This is required only to get the npm package manager.
+* Install the intermediary smee client by running the command shown below. The 
+installed app must be run at the start of every session as described in an earlier
+section. Note: The following command only installs the client. To run the client, 
+execute the command described earlier.
 ```
 npm install --global smee-client
 ```
-* Install Python 3
-* Run pip to install Doctor Fill library dependencies.
+* Install Python 3.
+* If you use Python virtual environments (recommended), create one for the Doctor
+Fill directory and activate it before installing the library dependencies in the
+next step.
+* Use pip to install the Doctor Fill library dependencies. The appropriate command
+line is shown below.
 ```
 pip install -r requirements.txt
 ```
+
+To verify that everything is set up correctly, run the intermediary smee client as 
+described in an earlier section. Then run the Doctor Fill app.py from a command 
+line or IDE/debugger. The web app should perform its initialization and then begin
+waiting for notifications from GitHub. As Doctor Fill proceeds, it sends 
+informational messages to the console.
+
+When Doctor Fill is waiting for notifications, go to the SCalwas/github_app_poc
+repo and create a new issue. Use any issue name and description. After the issue is
+created, Doctor Fill automatically adds the "enhancement" label to it. If the
+label appears shortly after creating the issue, the dev environment is working
+correctly.
