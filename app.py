@@ -126,7 +126,9 @@ def sdk_docs_github_app():
                     continue
                 contents = response.decoded_content     # contents are of type bytes
 
-                # Pass to linter
+                ### Pass to linter ###
+                # updated = add_your_function_here(contents)
+
                 # Append test line
                 contents += b'\nDoctor Fill prescribes one tall, cold line of text.\n'
                 updated = True
