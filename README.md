@@ -55,13 +55,13 @@ smee -u <smeeUrlAddress>
 ```
 
 The intermediary will run and wait for notifications from GitHub. It requires
-no user interaction to perform its duties. Just run it and leave it alone. When
-you want to terminate it, enter Ctrl-C.
+no user interaction to perform its duties. Just run it and leave it alone. To
+terminate the intermediary, enter Ctrl-C.
 
 If you want, you can optionally monitor in your browser the notifications and 
-payloads that the intermediary receives from GitHub. To do so, in your browser,
-go to the intermediary URL address. The loaded webpage is updated dynamically 
-whenever it receives a notification.
+payloads that the intermediary receives from GitHub. To do so, paste the 
+intermediary URL address into your browser. The loaded webpage is updated 
+dynamically whenever it receives a notification.
 
 ## Adding functionality to Doctor Fill
 
