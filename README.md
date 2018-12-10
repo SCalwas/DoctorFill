@@ -76,7 +76,7 @@ of the app.py source file. The location with a sample function call is shown bel
 
 ```python
 ### Pass to linter ###
-# updated = add_your_function_here(contents)
+# updated = add_your_function_here(contents_str)
 ```
 
 Your function can perform any exploratory and surgical operations it desires. If it 
