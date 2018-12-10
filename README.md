@@ -69,7 +69,7 @@ When the Doctor Fill web application receives notification that a push has occur
 on the github_app_poc repository, it cycles through each new file that was added to
 the repo as part of the push. For each new file, Doctor Fill loads the file's 
 contents and can pass the contents to a linter-type function. The file contents are
-passed as type 'bytes.'
+passed as a string.
 
 To have your function called, insert the appropriate code statement around line 130
 of the app.py source file. The location with a sample function call is shown below.

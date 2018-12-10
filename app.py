@@ -125,12 +125,14 @@ def sdk_docs_github_app():
                     logging.critical(e)
                     continue
                 contents = response.decoded_content     # contents are of type bytes
+                contents_str = contents.decode('utf8')  # convert to UTF-8 string
 
                 ### Pass to linter ###
-                # updated = add_your_function_here(contents)
+                # updated = add_your_function_here(contents_str)
 
                 # Append test line
-                contents += b'\nDoctor Fill prescribes one tall, cold line of text.\n'
+                contents_str += '\nDoctor Fill Café Test\n'
+                contents = contents_str.encode('utf8')  # convert back to UTF-8 bytes
                 updated = True
 
                 if updated:
