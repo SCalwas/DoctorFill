@@ -11,10 +11,10 @@ itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.0
 pycparser==2.19
-PyGithub==1.43.3
+PyGithub==1.43.7
 PyJWT==1.6.4
 requests==2.20.1
 six==1.11.0
-urllib3==1.24.1
+urllib3==1.24.2
 Werkzeug==0.14.1
 wrapt==1.10.11
